@@ -12,7 +12,8 @@ def load_csv(input_csv):
   with st.expander('See DataFrame'):
     st.write(df)
   return df
-
+  
+# Generate LLM response
 def generate_response(csv_file, input_query):
   llm = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.2, openai_api_key=openai_api_key)
   df = load_csv(csv_file)
@@ -21,7 +22,7 @@ def generate_response(csv_file, input_query):
   # Perform Query using the Agent
   response = agent.run(input_query)
   return st.success(response)
-
+  
 # Input widgets
 uploaded_file = st.file_uploader('Upload a CSV file', type=['csv'])
 question_list = [
